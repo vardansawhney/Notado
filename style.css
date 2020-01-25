@@ -9,7 +9,7 @@
     background-size: cover;
     background-position: center;
     margin-top: 0;
-    height: 900px;
+    height: 700px;
 }
 
 .title{
@@ -25,6 +25,15 @@
     float: right;
     font-family: "Railway", sans-serif;
     font-size: 20px;
+    margin-left: 0px;
+    margin-right: 300px;
+    margin-top: 200px;
+}
+
+#map {
     margin-top: 150px;
-    margin-right: 100px;
+    margin-left: 100px;
+    width: 600px;
+    height: 400px;
+    float: left;
 }

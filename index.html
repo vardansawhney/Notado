@@ -10,11 +10,24 @@
         <link href='https://fonts.googleapis.com/css?family=Ewert' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Gudea' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=[Amz7sVmy4DZti1eXGEDm9ojQIrhHeujP11II_dHSjriH6uH_U75TT7RcgofOyitn]' async defer></script>
+        <script type='text/javascript'>
+            function GetMap()
+            {
+                var map = new Microsoft.Maps.Map('#map');
+
+                //Add your post map load code here.
+            }
+        </script>
     </head>
     <body>
         <section id = "HOME">
             <div class="title">
                 <h1>Notado</h1>
+            </div>
+            
+            
+            <div id = "map">
             </div>
             
             <div class="input">
@@ -34,3 +47,5 @@
         
     </body>
 </html>
+
+
