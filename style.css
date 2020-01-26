@@ -6,13 +6,11 @@
 body{
     margin: 0px;
     padding: 0px;
-    background-image: url(background.jpeg);
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(background.jpeg);
     background-size: 1080px;
 }
 
 #HOME{
-    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), /*url(background.jpeg)*/;
-    height: 100%;
     background-size: cover;
     background-position: center;
     margin-top: 0px;
@@ -22,9 +20,12 @@ body{
 .title{
     color: white;
     font-family: "Railway", sans-serif;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     font-size: 20px;
     text-align: center;
     margin-top: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .input{
