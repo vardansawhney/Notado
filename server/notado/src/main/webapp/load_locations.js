@@ -27,6 +27,7 @@ function load_locations() {
                     'click',
                     function() {
                         for (const pin_ref of notado.locationpins) {pin_ref.setOptions({ color: 'purple' });}
+                        notado.currentlocpin.setOptions({color: 'purple'});
                         pin.setOptions({color: 'red'});
                         showratings(loc);
                         notado.selectedloc = loc.id;
