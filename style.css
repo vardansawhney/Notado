@@ -6,20 +6,22 @@
 body{
     margin: 0px;
     padding: 0px;
-    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(background.jpeg);
-    background-size: 1080px;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(background2.jpg);
+    background-size: cover;
+	width: 100%;
+	height:100%;
 }
 
 #HOME{
     background-size: cover;
     background-position: center;
     margin-top: 0px;
-    height: 700px;
+    height: 100%;
 }
 
 .title{
     color: white;
-    font-family: "Railway", sans-serif;
+    font-family: "Open Sans", sans-serif;
     background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     font-size: 20px;
     text-align: center;
@@ -31,29 +33,63 @@ body{
 .inputloc{
     color: white;
     float: right;
-    font-family: "Railway", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 20px;
     margin-left: 0px;
-    margin-right: 500px;
-    margin-top: 200px;
+    margin-right: 0px;
+    margin-top: 70px;
 }
 .inputrating{
     color: white;
     float: right;
-    font-family: "Railway", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 20px;
     margin-left: 0px;
     margin-top: 0px;
     margin-bottom: 300px;
 }
 
-#ratingsdisplay{
+.button {
+	background-color: #008CBA;
+	border: none;
+	color:white;
+	padding: 15px 20px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.button:hover{
+	outline: 1px solid white;
+}
+
+.grid-container {
+	display: inline-grid;
+	grid-row-gap: 40px;
+	margin-left: 40px;
+}
+
+.ratingsdisplay{
     color: white;
     visibility: hidden;
+	float: right;
+	margin-right: 250px;
+	margin-top: 200px;
+	font-family: "Open Sans", sans-serif;
+	
+	background-color: #008CBA;
+}
+
+.ratingsdisplay p{
+	padding: 10px;
+}
+
+#studyspace {
+	font-size: 22px;
 }
 
 #map {
-    margin-top: 150px;
+    margin-top: 100px;
     margin-left: 100px;
     width: 600px;
     height: 400px;
