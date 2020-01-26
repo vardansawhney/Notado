@@ -34,8 +34,8 @@ body{
     font-family: "Railway", sans-serif;
     font-size: 20px;
     margin-left: 0px;
-    margin-right: 500px;
-    margin-top: 200px;
+    margin-right: 0px;
+    margin-top: 150px;
 }
 .inputrating{
     color: white;
@@ -47,9 +47,24 @@ body{
     margin-bottom: 300px;
 }
 
-#ratingsdisplay{
+.grid-container {
+	display: inline-grid;
+	grid-row-gap: 40px;
+	margin-left: 40px;
+}
+
+.ratingsdisplay{
     color: white;
     visibility: hidden;
+	float: right;
+	margin-right: 250px;
+	margin-top: 300px;
+	font-family: "Railway", sans-serif;
+	font-size: 20px;
+}
+
+.ratingsdisplay p{
+	padding: 10px;
 }
 
 #map {
