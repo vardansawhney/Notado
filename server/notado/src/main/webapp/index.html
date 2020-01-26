@@ -12,6 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Amz7sVmy4DZti1eXGEDm9ojQIrhHeujP11II_dHSjriH6uH_U75TT7RcgofOyitn' async defer></script>
+        <script src="load_locations.js"></script>
         <script type='text/javascript'>
             var notado = {};
         
@@ -25,29 +26,30 @@
                     var loc = new Microsoft.Maps.Location(
                         position.coords.latitude,
                         position.coords.longitude);
-
+                    notado.currentloc = position;
                     //Add a pushpin at the user's location.
                     var pin = new Microsoft.Maps.Pushpin(loc, {title: 'Current Location'});
                     notado.map.entities.push(pin);
                     pin.title = 'Current Location';
                     Microsoft.Maps.Events.addHandler(pin, 'click', function (e) {
-						showratings('ratingsdisplay', pin.title); 
 						e.target.setOptions({ color: 'red' });
 					});
                     //Center the map on the user's location.
                     notado.map.setView({ center: loc, zoom: 14 });
 
+                    load_locations();
                 });
                 //Add your post map load code here.
-                load_locations();
             }
             
-            function showratings(classname, title){
-                document.getElementsByClassName(classname)[0].style.visibility = "visible";
-				document.getElementById("studyspace").innerHTML = title;
+            function showratings(loc){
+                document.getElementsByClassName("ratingsdisplay")[0].style.visibility = "visible";
+				document.getElementById("studyspace").innerHTML = loc.name;
+				document.getElementById("noise").innerHTML = loc.noise;
+				document.getElementById("foodaccess").innerHTML = loc.food;
+				document.getElementById("businessavail").innerHTML = loc.busy;
             }
         </script>
-        <script src="load_locations.js"></script>
     </head>
     <body>
         <section id = "HOME">
