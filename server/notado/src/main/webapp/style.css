@@ -72,8 +72,8 @@ body{
 .ratingsdisplay{
     color: white;
     visibility: hidden;
-	float: right;
-	margin-right: 250px;
+	float: left;
+	margin-left: 60px;
 	margin-top: 200px;
 	font-family: "Open Sans", sans-serif;
 	
