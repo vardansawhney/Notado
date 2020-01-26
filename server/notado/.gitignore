@@ -3,3 +3,4 @@ target
 .settings
 .project
 .classpath
+src/main/java/com/notado/app/Password.java
