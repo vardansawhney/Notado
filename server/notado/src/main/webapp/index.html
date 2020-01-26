@@ -37,16 +37,9 @@
                     //Center the map on the user's location.
                     notado.map.setView({ center: loc, zoom: 14 });
 
-                    // Get all the reviewed locations for the user using the server
-                   var xmlHttp = new XMLHttpRequest();
-                   xmlHttp.onreadystatechange = function() { 
-                       if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-                           notado.locations = JSON.parse(xmlHttp.responseText);
-                   }
-                   xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-                   xmlHttp.send(null); 
                 });
                 //Add your post map load code here.
+                load_locations();
             }
             
             function showratings(classname, title){
@@ -54,6 +47,7 @@
 				document.getElementById("studyspace").innerHTML = title;
             }
         </script>
+        <script src="load_locations.js"></script>
     </head>
     <body>
         <section id = "HOME">
