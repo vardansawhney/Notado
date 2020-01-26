@@ -10,6 +10,7 @@
         <link href='https://fonts.googleapis.com/css?family=Ewert' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Gudea' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Amz7sVmy4DZti1eXGEDm9ojQIrhHeujP11II_dHSjriH6uH_U75TT7RcgofOyitn' async defer></script>
         <script type='text/javascript'>
             var notado = {};
@@ -28,17 +29,20 @@
                     //Add a pushpin at the user's location.
                     var pin = new Microsoft.Maps.Pushpin(loc, {title: 'Current Location'});
                     notado.map.entities.push(pin);
-                    
-                    Microsoft.Maps.Events.addHandler(pin, 'click', function () { showratings('ratingsdisplay'); });
-
+                    pin.title = 'Current Location';
+                    Microsoft.Maps.Events.addHandler(pin, 'click', function (e) {
+						showratings('ratingsdisplay', pin.title); 
+						e.target.setOptions({ color: 'red' });
+					});
                     //Center the map on the user's location.
                     notado.map.setView({ center: loc, zoom: 14 });
                 });
                 //Add your post map load code here.
             }
             
-            function showratings(classname){
+            function showratings(classname, title){
                 document.getElementsByClassName(classname)[0].style.visibility = "visible";
+				document.getElementById("studyspace").innerHTML = title;
             }
         </script>
     </head>
@@ -48,8 +52,7 @@
                 <h1>Notado</h1>
             </div>
             
-            <div id = "map">
-            </div>
+            <div id = "map"> </div>
 			
 			<div class= "grid-container">
 				<div class="inputloc">
@@ -61,7 +64,7 @@
 						Longitude:<br>
 					<input type="text" id="long" value=""><br><br>
 					</form>
-					<button type="button" onclick="getlocdata()"> Submit Location </button>
+					<button type="button" class = "button" onclick="getlocdata()"> Submit Location </button>
 				</div>
             
 				<div class="inputrating">
@@ -73,13 +76,14 @@
 						Rate Business/Availability:<br>
 					<input type="text" id="ratebusiness" value=""><br><br>
 					</form>
-					<button type="button" onclick="getratedata()"> Submit Review </button>
+					<button type="button" class = "button" onclick="getratedata()"> Submit Review </button>
 				</div>
             
 			
 			</div>
             
 			<div class="ratingsdisplay">
+					<p id = "studyspace"> </p>
 					<p id= "noise"> Noise Rating: </p>
 					<p id= "foodaccess"> Food Access Rating:</p>
 					<p id= "businessavail"> Business/Availability Rating:</p>
@@ -97,7 +101,12 @@
                     notado.map.entities.push(pin);
                     notado.map.setView({ center: loc, zoom: 14 });
 					
-					Microsoft.Maps.Events.addHandler(pin, 'click', function () { showratings('ratingsdisplay'); });
+					pin.title = name;
+					
+					Microsoft.Maps.Events.addHandler(pin, 'click', function (e) { 
+						showratings('ratingsdisplay', pin.title); 
+						e.target.setOptions({ color: 'red' });
+					});
                 }
                 
                 function getlocdata() {
