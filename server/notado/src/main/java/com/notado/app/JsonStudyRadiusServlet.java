@@ -13,7 +13,7 @@ public class JsonStudyRadiusServlet extends HttpServlet
 		{
             double latitude = Double.parseDouble(request.getParameter("latitude"));
             double longitude = Double.parseDouble(request.getParameter("longitude"));
-            
+            // TODO: 0.05 degrees + and - for search area
 		}
 		catch(Exception e)
 		{

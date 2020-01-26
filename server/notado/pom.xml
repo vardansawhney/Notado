@@ -77,6 +77,20 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+          <configuration>
+            <url>http://localhost:8080/manager/text</url>
+            <path>/notado</path>
+            <!-- Set update to true to avoid exist war package can not be override error -->
+            <update>true</update>
+            <!-- Because deploy this maven project using plugin in pom so use the manager-script role user. -->
+            <username>war-deployer</username>
+            <password>maven-tomcat-plugin</password>
+            </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>

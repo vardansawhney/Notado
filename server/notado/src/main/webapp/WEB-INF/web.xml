@@ -4,4 +4,11 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <!-- Register the listener that reads and initializes the data -->
+  <listener>
+      <listener-class>
+          com.notado.app.InitRoutine
+      </listener-class>
+  </listener>
 </web-app>
