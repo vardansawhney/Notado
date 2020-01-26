@@ -28,14 +28,28 @@ body{
     padding-bottom: 10px;
 }
 
-.input{
+.inputloc{
     color: white;
     float: right;
     font-family: "Railway", sans-serif;
     font-size: 20px;
     margin-left: 0px;
-    margin-right: 300px;
+    margin-right: 500px;
     margin-top: 200px;
+}
+.inputrating{
+    color: white;
+    float: right;
+    font-family: "Railway", sans-serif;
+    font-size: 20px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 300px;
+}
+
+#ratingsdisplay{
+    color: white;
+    visibility: hidden;
 }
 
 #map {
