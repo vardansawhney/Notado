@@ -1,6 +1,7 @@
 package com.notado.app;
 
 import java.util.Vector;
+import java.util.ArrayList;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
@@ -33,7 +34,7 @@ public class JsonStudyRadiusServlet extends HttpServlet
                 double maxLat = latitude + 0.05 < 90? 90: latitude + 0.05;
                 double maxLong = longitude + 0.05 < 180? 180: longitude + 0.05;
 
-                Vector<StudyLocation> inRange = new Vector<>();
+                ArrayList<StudyLocationSnapshot> inRange = new ArrayList<>();
 
                 Vector<StudyLocation> locations =
                     (Vector<StudyLocation>)getServletContext().getAttribute("locations");
@@ -41,7 +42,10 @@ public class JsonStudyRadiusServlet extends HttpServlet
                 for (StudyLocation a : locations) {
                     if (minLat <= a.getLatitude() && a.getLatitude() <= maxLat
                         && minLong <= a.getLongitude() && a.getLongitude() <= maxLong) {
-                        inRange.add(a);
+                        // If it is in the box around the user's location,
+                        // get an object that holds precalculated averages to
+                        // send to the client website
+                        inRange.add(new StudyLocationSnapshot(a));
                     }
                 }
 

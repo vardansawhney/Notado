@@ -1,5 +1,7 @@
 package com.notado.app;
 
+import java.util.Vector;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,12 +17,29 @@ public class NewReviewServlet extends HttpServlet
 		
 		try 
 		{
-            double latitude = Double.parseDouble(request.getParameter("latitude"));
-            double longitude = Double.parseDouble(request.getParameter("longitude"));
-            String name = request.getParameter("name");
-            int noiseRating = Integer.parseInt(request.getParameter("noiserating"));
-            int foodAccessRating = Integer.parseInt(request.getParameter("foodaccessrating"));
-            int availabilityRating = Integer.parseInt(request.getParameter("availabilityrating"));
+            int id = Integer.parseInt(request.getParameter("id"));
+            int user = Integer.parseInt(request.getParameter("user"));
+            int noise = Integer.parseInt(request.getParameter("noise"));
+            int food = Integer.parseInt(request.getParameter("food"));
+            int busy = Integer.parseInt(request.getParameter("busy"));
+            
+            Vector<StudyLocation> locations = (Vector<StudyLocation>)
+                getServletContext().getAttribute("locations");
+
+            if (noise > 0 && noise <= 10
+                && busy > 0 && busy <= 10
+                && food > 0 && food <= 10
+                && id < locations.size()) {
+                // Valid
+                locations.get(id).addReview(new StudyLocationReview(
+                    user,
+                    noise,
+                    busy,
+                    food
+                ));
+            } else {
+			    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            }
 		}
 		catch (Exception e) 
 		{

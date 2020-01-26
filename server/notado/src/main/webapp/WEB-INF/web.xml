@@ -11,4 +11,35 @@
           com.notado.app.InitRoutine
       </listener-class>
   </listener>
+
+  <servlet>
+    <servlet-name>NewLocation</servlet-name>
+    <servlet-class>com.notado.app.NewLocationServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>NewReview</servlet-name>
+    <servlet-class>com.notado.app.NewReviewServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>GetLocations</servlet-name>
+    <servlet-class>com.notado.app.JsonStudyRadiusServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>NewLocation</servlet-name>
+    <url-pattern>/new-location</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>NewReview</servlet-name>
+    <url-pattern>/new-review</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>GetLocations</servlet-name>
+    <url-pattern>/get-locations</url-pattern>
+  </servlet-mapping>
+
 </web-app>

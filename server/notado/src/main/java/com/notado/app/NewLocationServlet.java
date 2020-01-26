@@ -56,7 +56,6 @@ public class NewLocationServlet extends HttpServlet {
                     busy,
                     food
                 ));
-                //SURE thats it for that method i guess
             }
 
         } catch (Exception e) {
