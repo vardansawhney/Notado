@@ -15,7 +15,21 @@
             function GetMap()
             {
                 var map = new Microsoft.Maps.Map('#map');
+                
+                
+                
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var loc = new Microsoft.Maps.Location(
+                        position.coords.latitude,
+                        position.coords.longitude);
 
+                    //Add a pushpin at the user's location.
+                    var pin = new Microsoft.Maps.Pushpin(loc, {title: 'Current Location'});
+                    map.entities.push(pin);
+
+                    //Center the map on the user's location.
+                    map.setView({ center: loc, zoom: 14 });
+                });
                 //Add your post map load code here.
             }
         </script>
@@ -31,18 +45,49 @@
             </div>
             
             <div class="input">
-                <form action="/action_page.php">
+                <form>
                     Add Name of Location:<br>
-                <input type="text" name="location" value=""><br>
+                <input type="text" id="location" value=""><br>
+                    Latitude:<br>
+                <input type="text" id="lat" value=""><br>
+                    Longitude:<br>
+                <input type="text" id="long" value=""><br>
                     Rate Noise:<br>
-                <input type="text" name="ratenoise" value=""><br>
+                <input type="text" id="ratenoise" value=""><br>
                     Rate Food Access:<br>
-                <input type="text" name="ratefood" value=""><br>
+                <input type="text" id="ratefood" value=""><br>
                     Rate Business/Availability:<br>
-                <input type="text" name="ratebusiness" value=""><br><br>
+                <input type="text" id="ratebusiness" value=""><br><br>
                 <input type="submit" value="Submit Review">
                 </form>
             </div>
+            
+            <script type='text/javascript'>
+                function newpin(x, y, name) {
+                    var loc = new Microsoft.Maps.Location(
+                        x,
+                        y);
+                    
+                    var pin = new Microsoft.Maps.Pushpin(loc, {title: name});
+                    map.entities.push(pin);
+                }
+            </script>
+            
+            <script type='text/javascript'>
+                function getdata() {
+                    var loc = document.getElementbyId("location").value
+                    var lat = document.getElementbyId("lat").value
+                    var long_ = document.getElementbyId("long").value
+                    var noise = document.getElementbyId("ratenoise").value
+                    var food = document.getElementbyId("ratefood").value
+                    var business = document.getElementbyId("ratebusiness").value
+                    
+                    newpin(lat, long_, loc);
+                }
+            </script>
+            
+            
+            
         </section>
         
     </body>
