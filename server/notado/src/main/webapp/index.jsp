@@ -36,6 +36,15 @@
 					});
                     //Center the map on the user's location.
                     notado.map.setView({ center: loc, zoom: 14 });
+
+                    // Get all the reviewed locations for the user using the server
+                   var xmlHttp = new XMLHttpRequest();
+                   xmlHttp.onreadystatechange = function() { 
+                       if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                           notado.locations = JSON.parse(xmlHttp.responseText);
+                   }
+                   xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+                   xmlHttp.send(null); 
                 });
                 //Add your post map load code here.
             }
@@ -54,7 +63,7 @@
             
             <div id = "map"> </div>
 			
-			<div class= "grid-container">
+			<div class= "grid-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)); padding-left: 10px; padding-right: 10px;"> 
 				<div class="inputloc">
 					<form>
 						Add Name of Location:<br>
