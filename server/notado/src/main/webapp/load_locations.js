@@ -23,6 +23,7 @@ function load_locations() {
                     function() {
                         pin.setOptions({color: 'red'});
                         showratings(loc);
+                        notado.selectedloc = loc.id;
                     }
                 );
                 notado.map.entities.push(pin);

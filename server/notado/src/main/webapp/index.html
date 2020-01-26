@@ -26,6 +26,7 @@
                     var loc = new Microsoft.Maps.Location(
                         position.coords.latitude,
                         position.coords.longitude);
+                    notado.selectedloc = -1;
                     notado.currentloc = position;
                     //Add a pushpin at the user's location.
                     var pin = new Microsoft.Maps.Pushpin(loc, {title: 'Current Location'});
@@ -58,10 +59,10 @@
             </div>
             
             <div class="ratingsdisplay">
-					<p id = "studyspace"> </p>
-					<p id= "noise"> Noise Rating: </p>
-					<p id= "foodaccess"> Food Access Rating:</p>
-					<p id= "businessavail"> Business/Availability Rating:</p>
+					<p><span id = "studyspace"></span> </p>
+					<p>Noise Rating: <span id= "noise"></span></p>
+					<p>Food Access Rating: <span id= "foodaccess"></span></p>
+					<p>Busyness:<span id= "businessavail"></span></p>
 			</div>
             
             <div id = "map"> </div>
@@ -82,11 +83,11 @@
 				<div class="inputrating">
 					<form>
 						Rate Noise:<br>
-					<input type="text" id="ratenoise" value=""><br>
+					<input type="text" id="ratenoise" value="5"><br>
 						Rate Food Access:<br>
-					<input type="text" id="ratefood" value=""><br>
+					<input type="text" id="ratefood" value="5"><br>
 						Rate Business/Availability:<br>
-					<input type="text" id="ratebusiness" value=""><br><br>
+					<input type="text" id="ratebusiness" value="5"><br><br>
 					</form>
 					<button type="button" class = "button" onclick="getratedata()"> Submit Review </button>
 				</div>
@@ -117,16 +118,56 @@
                 function getlocdata() {
                     var loc = document.getElementById("location").value
                     var lat = document.getElementById("lat").value
-                    var long_ = document.getElementById("long").value
+                    var longitude = document.getElementById("long").value
                     document.getElementById("location").value = "";
-                    
-                    newpin(lat, long_, loc);
+                    document.getElementById("lat").value = "";
+                    document.getElementById("long").value = "";
+                    var noise = document.getElementById("ratenoise").value
+                    var food = document.getElementById("ratefood").value
+                    var business = document.getElementById("ratebusiness").value
+   document.getElementById("ratenoise").value = 5
+   document.getElementById("ratefood").value = 5
+   document.getElementById("ratebusiness").value = 5
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("POST",
+        "/notado/new-location?name="
+        + loc
+        + "&latitude="
+        + lat
+        + "&longitude="
+        + longitude
+        + "&user=420"
+        + "&food="
+        + food
+        + "&noise="
+        + noise
+        + "&busy="
+        + business, true); // true for asynchronous 
+    xmlHttp.send(null);
+      xmlHttp.onreadystatechange = function() {if (xmlHttp.readyState == 4) load_locations(); }
+                    //newpin(lat, longitude, loc);
                 }
                 
                 function getratedata() {
                     var noise = document.getElementById("ratenoise").value
                     var food = document.getElementById("ratefood").value
                     var business = document.getElementById("ratebusiness").value
+   document.getElementById("ratenoise").value = 5
+   document.getElementById("ratefood").value = 5
+   document.getElementById("ratebusiness").value = 5
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("POST",
+        "/notado/new-review?id="
+        + notado.selectedloc
+        + "&user=420"
+        + "&food="
+        + food
+        + "&noise="
+        + noise
+        + "&busy="
+        + business, true); // true for asynchronous 
+    xmlHttp.send(null);
+      xmlHttp.onreadystatechange = function() { if (xmlHttp.readyState == 4) load_locations(); }
                 }
             </script>
             
