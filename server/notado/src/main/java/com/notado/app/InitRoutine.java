@@ -10,8 +10,9 @@ public class InitRoutine implements ServletContextListener {
 
 	public void contextInitialized(ServletContextEvent contextEvent) {
 		// TODO: initialize stuff taht needs intializing
+		// jdbc:mysql://localhost:3306/notado
+		
 		context = contextEvent.getServletContext();
-
 	}
 
 	public void contextDestroyed(ServletContextEvent contextEvent) {
