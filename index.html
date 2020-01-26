@@ -10,13 +10,15 @@
         <link href='https://fonts.googleapis.com/css?family=Ewert' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Gudea' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=[Amz7sVmy4DZti1eXGEDm9ojQIrhHeujP11II_dHSjriH6uH_U75TT7RcgofOyitn]' async defer></script>
+        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Amz7sVmy4DZti1eXGEDm9ojQIrhHeujP11II_dHSjriH6uH_U75TT7RcgofOyitn' async defer></script>
         <script type='text/javascript'>
+            var notado = {};
+        
             function GetMap()
             {
-                var map = new Microsoft.Maps.Map('#map');
+                //var map = new Microsoft.Maps.Map('#map');
                 
-                
+                notado.map = new Microsoft.Maps.Map('#map');
                 
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var loc = new Microsoft.Maps.Location(
@@ -25,10 +27,10 @@
 
                     //Add a pushpin at the user's location.
                     var pin = new Microsoft.Maps.Pushpin(loc, {title: 'Current Location'});
-                    map.entities.push(pin);
+                    notado.map.entities.push(pin);
 
                     //Center the map on the user's location.
-                    map.setView({ center: loc, zoom: 14 });
+                    notado.map.setView({ center: loc, zoom: 14 });
                 });
                 //Add your post map load code here.
             }
@@ -39,7 +41,6 @@
             <div class="title">
                 <h1>Notado</h1>
             </div>
-            
             
             <div id = "map">
             </div>
@@ -58,29 +59,31 @@
                 <input type="text" id="ratefood" value=""><br>
                     Rate Business/Availability:<br>
                 <input type="text" id="ratebusiness" value=""><br><br>
-                <input type="submit" value="Submit Review">
+                
                 </form>
+                <button type="button" onclick="getdata()"> Submit Review </button>
             </div>
             
-            <script type='text/javascript'>
+            <script>
                 function newpin(x, y, name) {
                     var loc = new Microsoft.Maps.Location(
                         x,
                         y);
                     
+                    
                     var pin = new Microsoft.Maps.Pushpin(loc, {title: name});
-                    map.entities.push(pin);
+                    notado.map.entities.push(pin);
+                    notado.map.setView({ center: loc, zoom: 14 });
                 }
-            </script>
-            
-            <script type='text/javascript'>
+                
                 function getdata() {
-                    var loc = document.getElementbyId("location").value
-                    var lat = document.getElementbyId("lat").value
-                    var long_ = document.getElementbyId("long").value
-                    var noise = document.getElementbyId("ratenoise").value
-                    var food = document.getElementbyId("ratefood").value
-                    var business = document.getElementbyId("ratebusiness").value
+                    var loc = document.getElementById("location").value
+                    var lat = document.getElementById("lat").value
+                    var long_ = document.getElementById("long").value
+                    var noise = document.getElementById("ratenoise").value
+                    var food = document.getElementById("ratefood").value
+                    var business = document.getElementById("ratebusiness").value
+                    document.getElementById("location").value = "";
                     
                     newpin(lat, long_, loc);
                 }

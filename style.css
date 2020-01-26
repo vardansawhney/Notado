@@ -1,6 +1,11 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
 }
 
 #HOME{
@@ -8,7 +13,7 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    margin-top: 0;
+    margin-top: 0px;
     height: 700px;
 }
 
@@ -17,7 +22,7 @@
     font-family: "Railway", sans-serif;
     font-size: 20px;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 .input{
