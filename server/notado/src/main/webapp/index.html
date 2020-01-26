@@ -28,11 +28,13 @@
                         position.coords.longitude);
                     notado.selectedloc = -1;
                     notado.currentloc = position;
+                    notado.locationpins = [];
                     //Add a pushpin at the user's location.
                     var pin = new Microsoft.Maps.Pushpin(loc, {title: 'Current Location'});
                     notado.map.entities.push(pin);
                     pin.title = 'Current Location';
                     Microsoft.Maps.Events.addHandler(pin, 'click', function (e) {
+                                                for (const pin_ref of notado.locationpins) {pin_ref.setOptions({ color: 'purple' });}
 						e.target.setOptions({ color: 'red' });
 					});
                     //Center the map on the user's location.

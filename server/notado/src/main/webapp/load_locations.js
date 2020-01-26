@@ -1,6 +1,11 @@
 
 function load_locations() {
     // Get all the reviewed locations for the user using the server
+    if (notado.locationpins !== []) {
+        for (const pin_ref of notado.locationpins) {
+            notado.map.entities.remove(pin_ref);
+        }
+    }
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4) {
@@ -21,12 +26,14 @@ function load_locations() {
                     pin,
                     'click',
                     function() {
+                        for (const pin_ref of notado.locationpins) {pin_ref.setOptions({ color: 'purple' });}
                         pin.setOptions({color: 'red'});
                         showratings(loc);
                         notado.selectedloc = loc.id;
                     }
                 );
                 notado.map.entities.push(pin);
+                notado.locationpins.push(pin);
             }
         }
     }
